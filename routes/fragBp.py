@@ -47,14 +47,14 @@ def upd_fr():
     dInicio = datetime.strptime(request.form["dt"], '%Y-%m-%d')
     
 
-    fr = Fragment.query.filter_by(id = iFr).first()
-    fr.fragmento = sFragmento
-    fr.titulo = sTitulo
-    fr.dt = dInicio    
-    db.session.add(fr)
+    frags = Fragment.query.filter_by(id = iFr).first()
+    frags.fragmento = sFragmento
+    frags.titulo = sTitulo
+    frags.dt = dInicio    
+    db.session.add(frags)
     db.session.commit()
 
-    return redirect(url_for("fragBp.uc_list"))
+    return redirect(url_for("fragBp.fr_list"))
 
 @fragBp.route('/fragmento/delete/<fr_id>')
 def delete_fr(fr_id=0):
